@@ -8,6 +8,28 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.handleSearch('cats');
+  }
+
+  handleSearch(query) {
+    var object = {
+        q: query,
+        part: 'snippet',
+        maxResults: 5,
+        type: 'video',
+        key: window.YOUTUBE_API_KEY,
+        videoEmbeddable: 'true'
+      }
+
+    searchYouTube(object, (data) => {
+      this.setState({
+        videoList: data.items
+      });
+    })
+  }
+
+
   handleSelectVideo(video) {
     this.setState({
       currentVideo: video
@@ -20,7 +42,7 @@ class App extends React.Component {
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
           <div>
-          <Search />
+          <Search handleSearch={this.handleSearch.bind(this)} />
           </div>
         </div>
       </nav>
