@@ -6,13 +6,11 @@ class App extends React.Component {
       videoList: window.exampleVideoData,
       currentVideo: 0
     };
-
-    this.handleSelectVideo = this.handleSelectVideo.bind(this);
   }
 
   handleSelectVideo(video) {
     this.setState({
-      currentVideo: 3
+      currentVideo: video
     });
   }
 
@@ -33,7 +31,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="col-md-5">
-          <VideoList videos={this.state.videoList} handleSelectVideo={this.handleSelectVideo} />
+          <VideoList videos={this.state.videoList} handleSelectVideo={this.handleSelectVideo.bind(this)} />
         </div>
       </div>
     </div>
