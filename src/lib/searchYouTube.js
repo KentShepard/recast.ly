@@ -5,6 +5,7 @@ var searchYouTube = (options, callback) => {
     data: options,
     dataType: 'json',
     success: function(data) {
+      console.log(options);
       callback(data);
     },
     error: function(err) {

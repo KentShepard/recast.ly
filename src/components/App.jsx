@@ -8,13 +8,14 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.handleSearch('cats');
-  }
+  // componentDidMount() {
+  //   this.handleSearch( 'cats');
+  // }
 
-  handleSearch(query) {
+  handleSearch(e) {
+    console.log(e.target.value);
     var object = {
-        q: query,
+        q: e.target.value,
         part: 'snippet',
         maxResults: 5,
         type: 'video',
@@ -22,11 +23,12 @@ class App extends React.Component {
         videoEmbeddable: 'true'
       }
 
-    searchYouTube(object, (data) => {
+  searchYouTube(object, (data) => {
       this.setState({
         videoList: data.items
       });
     })
+
   }
 
 
