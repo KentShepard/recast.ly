@@ -13,7 +13,7 @@ class App extends React.Component {
       <div className="row">
         <div className="col-md-7">
           <div>
-        {/* <VideoPlayer /> */}
+       <VideoPlayer video={window.exampleVideoData[0]}/>
           </div>
         </div>
         <div className="col-md-5">
