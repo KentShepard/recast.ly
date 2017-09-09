@@ -1,4 +1,20 @@
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      videoList: window.exampleVideoData,
+      currentVideo: 0
+    };
+
+    this.handleSelectVideo = this.handleSelectVideo.bind(this);
+  }
+
+  handleSelectVideo(video) {
+    this.setState({
+      currentVideo: 3
+    });
+  }
 
   render() {
     return (
@@ -13,11 +29,11 @@ class App extends React.Component {
       <div className="row">
         <div className="col-md-7">
           <div>
-       <VideoPlayer video={window.exampleVideoData[0]}/>
+       <VideoPlayer video={this.state.videoList[this.state.currentVideo]}/>
           </div>
         </div>
         <div className="col-md-5">
-          <VideoList videos={window.exampleVideoData} />
+          <VideoList videos={this.state.videoList} handleSelectVideo={this.handleSelectVideo} />
         </div>
       </div>
     </div>
