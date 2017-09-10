@@ -12,6 +12,6 @@
       //videolistentry
 
 ReactDOM.render(
-  <App />,
+  <App searchYouTube={searchYouTube} />,
   document.getElementById('app')
 );

@@ -4,33 +4,28 @@ class App extends React.Component {
 
     this.state = {
       videoList: window.exampleVideoData,
-      currentVideo: 0
+      currentVideo: window.exampleVideoData[0]
     };
   }
 
-  // componentDidMount() {
-  //   this.handleSearch( 'cats');
-  // }
+  componentDidMount() {
+    this.handleSearch('cats');
+  }
 
-  handleSearch(e) {
-    console.log(e.target.value);
+  handleSearch(query) {
     var object = {
-        q: e.target.value,
-        part: 'snippet',
-        maxResults: 5,
-        type: 'video',
+        query: query || 'cats',
         key: window.YOUTUBE_API_KEY,
-        videoEmbeddable: 'true'
-      }
+    }
 
   searchYouTube(object, (data) => {
       this.setState({
-        videoList: data.items
+        videoList: data.items,
+        currentVideo: data.items[0]
       });
     })
 
   }
-
 
   handleSelectVideo(video) {
     this.setState({
@@ -51,7 +46,7 @@ class App extends React.Component {
       <div className="row">
         <div className="col-md-7">
           <div>
-       <VideoPlayer video={this.state.videoList[this.state.currentVideo]}/>
+       <VideoPlayer video={this.state.currentVideo}/>
           </div>
         </div>
         <div className="col-md-5">
